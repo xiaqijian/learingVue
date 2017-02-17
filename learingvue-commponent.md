@@ -7,14 +7,14 @@
 const heard = { template: '<div>this is heardComponent</div>' }
 </script>
 ```
-> 导入组件
+导入组件
 ```
 <script>
 import heard from './components/heard.vue'
 </script>
 ```
 2. 注册component
-> 全局注册组件
+全局注册组件
 ```
 <script>
 import Vue from 'vue'
