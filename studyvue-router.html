@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>learing vue-router</title>
+</head>
+<body>
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+	<div id="app">
+		<router-link to="/redmsg">点击我显示</router-link>
+		<router-link to="/blackmsg">点我显示黑色字体</router-link>
+		<h1>
+			<router-view></router-view>
+		</h1>
+	</div>
+	<script>
+	// 使用vue-router方法
+	// 1.定义组件，可以利用import导入
+	const redmsg = { template: '<div class="red">我是红色字体</div>' }
+	const blackmsg = { template: '<div>没有错我是黑色字体</div>' }
+	// 2.定义router
+	const routes = [
+		{ path:'/redmsg',component:redmsg },
+		{ path: '/blackmsg',component:blackmsg }
+	]
+	// 3.创建router实例
+	const router = new VueRouter({
+		routes
+	})
+	// 4.运行router
+		var vmRouter =new Vue({
+			el:"#app",
+			data:{
+
+			},
+			router
+		})
+	</script>
+	<style type="text/css">
+		.red{
+			color:red;
+		}
+	</style>
+</body>
+</html>

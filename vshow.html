@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>compute</title>
+</head>
+<body>
+	<style type="text/css">
+		.box {
+			font-size: 40px;
+		}
+		.class-a {
+			color:red;
+		}
+		.class-b {
+			color:yellow;
+		}
+	</style>
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+	<div id="app">
+		<div v-show="ok">正确就显示这里</div>
+		<div v-else>错误显示这里</div>
+		<button v-on:click="change">点击我我 叫他变字</button>
+	</div>
+	<script>
+		var vm = new Vue ({
+			el:"#app",
+			data:{
+				ok:false
+			},
+			methods:{
+				change: function () {
+					this.ok = true
+				}
+			}
+			
+		})
+	</script>
+</body>
+</html>

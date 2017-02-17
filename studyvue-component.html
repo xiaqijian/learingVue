@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>learing vue-component</title>
+</head>
+<body>
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+	<div id="app">
+		<p>{{books}}</p>
+		<my-component></my-component>
+	</div>
+	<script>
+	// 关于component使用
+	// 1.注册组件下面是全局注册也是利用局部注册组件
+	// Vue.component ('my-component',{
+	// 	template: '<div>我是组件里面的内容</div>'
+	// })
+	const component = {
+		template:'<div>我是局部注册的组件</div>'
+	}
+	// 2.运用组件
+	new Vue({
+		el:"#app",
+		components:{
+			'my-component':component
+		},
+		ready: function() {
+	        this.$http.get('https://api.myjson.com/bins/r8mm', function(data) {
+	            this.$set('books', data);
+	        }).error(function(data, status, request) {
+	            console.log('fail' + status + "," + request);
+	        })
+	    },
+	    data:{
+	    	books:''
+	    }
+	})
+	</script>
+	<style type="text/css">
+		
+	</style>
+</body>
+</html>

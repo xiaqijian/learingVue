@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>compute</title>
+</head>
+<body>
+	<style type="text/css">
+		.box {
+			font-size: 40px;
+		}
+		.class-a {
+			color:red;
+		}
+		.class-b {
+			color:yellow;
+		}
+	</style>
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+	<div id="app">
+		<div class="box" v-bind:class="{'class-a':isA,'class-b':isB}">
+			{{msg}}
+		</div>
+		<div v-bind:class="classObject">{{msg}}</div>
+		<!-- 自动添加前缀 -->
+		<div v-bind:style="{color:'red',fontSize:12+'px',transform:deg}">听说很强大能够自动添加前缀，比如transform</div>
+	</div>
+	<script>
+		var vm = new Vue ({
+			el:"#app",
+			data:{
+				deg:'rotate(30deg)',
+				msg: '我是显示信息内容',
+				isA:false,
+				isB:true,
+				classObject:{
+					'class-a':true,
+					'class-b':false
+				}
+			},
+			
+			
+		})
+	</script>
+</body>
+</html>

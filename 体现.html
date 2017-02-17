@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>learing vue-router</title>
+</head>
+<body>
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+	<div id="app">
+		<section>
+		{{a}}
+			<input type="radio" id="one" value="one" v-model="picked">
+			<label for="one">快速体现</label>
+			<!-- <br> -->
+			<input type="radio" id="two" value="two" v-model="picked">
+			<label for="two">普通体现</label>
+			<br>
+			<span v-show="picshow">Picked: {{ picked }}</span>
+		</section>
+		<section>
+			<span>体现金额</span><input v-model="msg" placeholder="0.00">
+		</section>
+		<section>
+			<span>实际提取金额</span><span class="agreen">{{message}}元</span><span class="ared" v-show="showw">快速体现每笔需收取0.6%手续费</span>
+		</section>
+		<section>
+			{{selectpay}}
+			<span v-on:click = "selectpay()">登陆密码</span><input>
+		</section>
+	</div>
+	<script>
+
+		var vm = new Vue ({
+			el: '#app',
+			data: {
+				a: 1,
+				msg: '',
+				picked: 'one',
+				picshow: false,
+				showw: false
+			},
+			computed: {
+				message: function () {
+					const a = this.msg;
+					const b = a*0.006;
+					return a-b
+				},
+				selectpay: function () {
+					var ddd = this.picked;
+					if (ddd == 'one') {
+						this.showw = true;
+						// return 1
+					} else {
+						this.showw = false;
+					}
+				}
+			},
+			methods: {
+				
+			}
+		})
+		
+
+
+
+		// function A () {
+		//     var a = 2;
+		//     var b = 3;
+		//     var c = a+b;
+		//     return c;
+		// }
+		// var d = A ();
+		// console.log (d);
+		// function B (c) {
+		//     alert(c)
+		// }
+		// B ( A() )
+	</script>
+	<style type="text/css">
+
+		section {
+			margin:10px;
+			font-size: 12px;
+		}
+		#app span {
+			margin-right: 20px;
+		}
+		#app .ared {
+			color: red;
+		}
+		#app .agreen {
+			color: green;
+			font-weight: bold;
+		}
+	</style>
+</body>
+</html>

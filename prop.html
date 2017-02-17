@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>learing prop父组件向子组件传数据</title>
+</head>
+<body>
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+	<div id="app">
+		<div>
+			我是prop
+			<input v-model="msg">
+		</div>
+		{{msg}}
+		<my-component message="{{msg}}"></my-component>
+	</div>
+	<script>
+	// 注册组件
+	var mycomponent = {
+		props: ['message'],
+		template: '<h1>{{msg}}</h2>'
+	}
+	new Vue ({
+		el: '#app',
+		data: {
+			msg: ''
+		},
+		components: {
+			'my-component': mycomponent
+		}
+	})
+	</script>
+	<style type="text/css">
+		
+	</style>
+</body>
+</html>

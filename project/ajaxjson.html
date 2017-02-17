@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #weather{
+            width: 800px;
+            height: 500px;
+            margin: 0 auto;
+        }
+
+        .div{
+            width: 150px;
+            height: 200px;
+            background: deepskyblue;
+            display: inline-block;
+            line-height: 33px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <script type="text/javascript" src="http://jiushumall.com/themes/jiumi/js/jquery.js"></script>
+    <div id="weather">
+        <div class="div"></div>
+        <div class="div"></div>
+        <div class="div"></div>
+        <div class="div"></div>
+        <div class="div"></div>
+    </div>
+
+    <script type="text/javascript">
+
+        /**
+ * Created by Administrator on 2016/9/3.
+ */
+// function ajaxFun(obj){
+
+//     //1.创建请求对象
+//     var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
+
+//     //2.判断请求方法
+//     var method = obj.method.toUpperCase();
+
+//     if (method == "GET"){
+//         xhr.open(method,obj.url+"?"+obj.data,true);
+//         xhr.send(null);
+//     }else if (method == "POST"){
+//         xhr.open(method, obj.url, true);
+//         xhr.send(obj.data);
+//     }else{
+//         console.error("请求方式有误，请选择get/post中的一种");
+//     }
+
+    //3.监听服务器返回事件
+//     xhr.onreadystatechange = function () {
+//         if (xhr.readyState == 4){
+//             if (xhr.status >=200 && xhr.status < 300){
+//                 obj.successFun(xhr.responseText);
+//             }else{
+//                 obj.failFun("请求数据失败");
+//                 console.warn(xhr.status);
+//             }
+//         }
+//     };
+// }
+
+
+        var divs = document.getElementsByClassName("div");
+
+        // var obj = {
+        //     method:"Get",
+        //     url:"http://wthrcdn.etouch.cn/weather_mini?city=北京",
+        //     data:"",
+        //     successFun:successFun,
+        //     failFun:failFun
+        // };
+
+        // ajaxFun(obj);
+
+        // function successFun(data){
+        //     var resultObj = JSON.parse(data).data;
+        //     var forecastArray = resultObj.forecast;
+
+        //     for (var i in forecastArray){
+        //         var array = forecastArray[i];
+        //         divs[i].innerHTML = array.date + "<br>" + array.type + "<br>" +array.high + "<br>" + array.low+"<br>"+array.fengli+ "<br>" + array.fengxiang;
+        //     }
+        // }
+
+        // function failFun(data){
+        //     alert(data);
+        // }
+        // $(function(){
+        //     $.ajax({
+        //         type: 'GET',
+        //         url: 'http://wthrcdn.etouch.cn/weather_mini?city=杭州',
+        //         // dataType: "JSON",
+        //         success: function (data){
+        //             var resultObj = JSON.parse(data).data;
+        //             var forecastArray = resultObj.forecast;
+
+        //             for (var i in forecastArray){
+        //                 var array = forecastArray[i];
+        //                 divs[i].innerHTML = array.date + "<br>" + array.type + "<br>" +array.high + "<br>" + array.low+"<br>"+array.fengli+ "<br>" + array.fengxiang;
+        //             }
+        //                 }
+        //     })
+        // })
+        $(function(){
+            $.ajax({
+                type: 'GET',
+                url: 'http://wthrcdn.etouch.cn/weather_mini?city=杭州',
+                // dataType: "JSON",
+                success: function (data){
+                    var forecastArray = JSON.parse(data).data;
+                    // var forecastArray = resultObj.forecast;
+                    console.log(forecastArray);
+                }
+                   
+            })
+        })
+    </script>
+</body>
+</html>

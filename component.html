@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>compute</title>
+</head>
+<body>
+	<style type="text/css">
+				
+	</style>
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+	<div id="app">
+		  <!-- 这个component是相当重要的内容
+
+			1.需要注册组件或者直接利用import导入
+			const heard = '<div>我是头部内容</div>'
+
+			2. 创建实例
+			3.使用
+		   -->
+		<heard-a></heard-a>
+		<!-- <foot-a></foot-a> -->
+	</div>
+	<script>
+		// 局部注册component
+		// const heard = { template: '<div>我是头部</div>' }
+		// const foot = {  template: '<div>我是尾部</div>' }
+
+		// 全局注册component
+		Vue.component ('heard-a',{
+			teplate: '<div>我是全局注册的component</div>'
+		})
+		var vm = new Vue ({
+			el:"#app",
+			data:{
+				
+			},
+			
+			
+		})
+	</script>
+</body>
+</html>
